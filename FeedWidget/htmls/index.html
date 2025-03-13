@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <!-- Meta viewport para diseño responsivo -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Mis Publicaciones de Facebook</title>
+  
+  <!-- Bootstrap CSS (sólo para utilidades e iconos) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  
+  <!-- Hoja de estilos personalizada -->
+  <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+
+  <!-- Navbar personalizado -->
+  <nav class="custom-navbar">
+    <div class="container-fluid">
+      <div class="navbar-left d-flex align-items-center">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Logo de Facebook" class="fb-logo">
+        <a class="custom-navbar-brand" href="#">Bienvenidos</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenedor principal: se agrega margen superior para no quedar tapado por el navbar fijo -->
+  <div class="container-fluid" style="margin-top: 70px;">
+    <div class="row">
+      <!-- Barra lateral izquierda -->
+      <!-- DESBLOQUEARLO LUEGO
+      <aside class="sidebar p-4">
+        <h5 class="mb-3 menu-lateral">Menú Lateral</h5>
+        <div class="ul-container">
+          <ul class="list-unstyled">
+            <div class="titulo-container">Facebook Connection</div>
+            <div class="comentario-container">Faltan permisos necesarios en el Api</div><br>
+            <div class="comentario-container">Que estresante sacar el api de facebook</div>
+          </ul>
+        </div>
+      </aside> -->
+
+      <!-- Contenido principal -->
+      <main class="main-content p-4">
+        <!-- Mensaje de carga / error -->
+        <div id="message" class="text-center fs-5 mb-4">
+          Cargando publicaciones, por favor espera...
+        </div>
+
+        <!-- Contenedor de las publicaciones -->
+        <div class="fondo">
+          <div id="posts">
+            <!-- Se inyectan las tarjetas aquí -->
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Script con la lógica de conexión a Facebook -->
+  <script src="../scripts/script.js"></script>
+</body>
+</html>

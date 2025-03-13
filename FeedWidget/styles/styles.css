@@ -1,0 +1,266 @@
+/* ===== Variables Globales ===== */
+:root {
+  --sidebar-width: 250px;
+  --sidebar-bg-color: #212021;
+  --navbar-bg-color: #fff;
+  --navbar-border-color: #ddd;
+  --main-bg-color: #fefeff;
+  --text-color: #1c1e21;
+  --muted-text-color: #606770;
+  --hover-bg-color: #d8dadf67;
+  --btn-hover-color: #1877F2;
+  --fb-icon-color: #1877F2;
+  --post-bg-color: #fbfafb;
+  --post-border-color: #f7f6f7;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --transition-speed: 0.2s;
+}
+
+/* ===== Layout General ===== */
+body {
+  background-color: var(--main-bg-color);
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar personalizado */
+.custom-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--navbar-bg-color);
+  border-bottom: 1px solid var(--navbar-border-color);
+  z-index: 1000;
+  padding: 12px 20px;
+  font-family: 'Times New Roman', Times, serif;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+.custom-navbar .container-fluid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.custom-navbar-brand {
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 6px;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+/* Estilo para el logo de Facebook */
+.fb-logo {
+  height: 35px;
+  margin-right: 10px;
+}
+
+/* Barra lateral: se mantiene fija */
+.sidebar {
+  position: fixed;
+  left: 0;
+  width: var(--sidebar-width);
+  min-height: calc(100vh - 70px);
+  background-color: var(--sidebar-bg-color);
+  color: #fff;
+  transition: width var(--transition-speed);
+}
+
+/* Contenido principal: margen para dejar espacio al sidebar */
+.main-content {
+  flex: 1;
+  padding: 100px;
+  margin-left: var(--sidebar-width);
+}
+
+/* Fondo de publicaciones */
+.fondo {
+  background-color: var(--post-bg-color);
+  padding: 28px;
+  border-radius: 20px;
+  border: 3px solid var(--post-border-color);
+  transform: translate(-10px, -35px);
+}
+
+/* ===== Diseño de publicaciones estilo "masonry" en 3 columnas ===== */
+#posts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 50px; /* Espacio superior */
+}
+
+/* Tarjetas de publicaciones */
+.fb-post {
+  background-color: var(--main-bg-color);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.fb-post:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+/* Cabecera de la publicación: Foto, nombre y fecha */
+.fb-post-header {
+  background-color: #fff;
+  padding: 15px;
+}
+.fb-post-author-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.fb-post-date {
+  font-size: 0.75rem;
+  color: var(--muted-text-color);
+  margin-top: 7px;
+}
+
+/* Cuerpo de la publicación */
+.fb-post-body {
+  padding: 15px;
+  flex: 1 1 auto;
+}
+.fb-post-message {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  white-space: pre-line;
+}
+
+/* Imagen de la publicación */
+.fb-post-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Sección de acciones: "Me gusta", comentarios, compartir */
+.fb-post-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px 10px;
+  font-size: 14px;
+  color: var(--muted-text-color);
+}
+
+/* "Me gusta" con ícono */
+.fb-like-count {
+  display: inline-flex;
+  align-items: center;
+}
+.fb-like-icon {
+  font-size: 16px;
+  color: var(--fb-icon-color);
+  margin-right: 6px;
+}
+.like-text {
+  color: var(--muted-text-color);
+}
+
+/* Texto de comentarios */
+.fb-comments-count {
+  margin-left: 15px;
+  color: var(--muted-text-color);
+}
+
+/* Botón de compartir estilo "FB" */
+.fb-post-share-btn {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--main-bg-color);
+  color: #050505;
+  border-radius: 3px;
+  padding: 5px 10px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.fb-post-share-btn:hover {
+  background-color: var(--hover-bg-color);
+}
+.fb-post-share-btn i {
+  margin-right: 5px;
+  font-size: 16px;
+  color: var(--muted-text-color);
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal .modal-content {
+  background-color: #fff;
+  color: #000;
+  border-radius: 8px;
+  max-width: 800px;
+  width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  position: relative;
+  padding: 20px;
+}
+
+.modal .modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #000;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* Animaciones para botones */
+button {
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* Menú lateral y otros detalles */
+.menu-lateral {
+  text-align: center;
+  padding-top: 5px;
+  font-size: 15px;
+}
+
+.titulo-container, .comentario-container {
+  font-size: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.comentario-container {
+  color: #ffffff77;
+  font-size: 13px;
+  padding-top: 3px;
+}
